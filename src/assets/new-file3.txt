@@ -1,0 +1,25 @@
+<div>
+						<label for="side-a" class="block text-gray-600">Side a (length)</label>
+						<input v-model="a" type="number" id="side-a" class="mt-1 p-2 border border-gray-300 rounded-md w-full" placeholder="Enter side a" />
+					</div>
+					<div>
+						<label for="side-b" class="block text-gray-600">Side b (length)</label>
+						<input v-model="b" type="number" id="side-b" class="mt-1 p-2 border border-gray-300 rounded-md w-full" placeholder="Enter side b" />
+					</div>
+					<div>
+						<label for="side-c" class="block text-gray-600">Side c (length)</label>
+						<input v-model="c" type="number" id="side-c" class="mt-1 p-2 border border-gray-300 rounded-md w-full" placeholder="Enter side c" />
+					</div>
+					<div>
+						<label for="angle-a" class="block text-gray-600">Angle A (degrees)</label>
+						<input v-model="A" type="number" id="angle-a" class="mt-1 p-2 border border-gray-300 rounded-md w-full" placeholder="Enter angle A" />
+					</div>
+					<div>
+						<label for="angle-b" class="block text-gray-600">Angle B (degrees)</label>
+						<input v-model="B" type="number" id="angle-b" class="mt-1 p-2 border border-gray-300 rounded-md w-full" placeholder="Enter angle B" />
+					</div>
+					<div>
+						<label for="angle-c" class="block text-gray-600">Angle C (degrees)</label>
+						<input v-model="C" type="number" id="angle-c" class="mt-1 p-2 border border-gray-300 rounded-md w-full" placeholder="Enter angle C" />
+					</div>
+				</div>
