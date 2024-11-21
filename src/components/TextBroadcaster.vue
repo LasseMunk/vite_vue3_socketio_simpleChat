@@ -1,7 +1,11 @@
 <template>
 	<div>
-		<input v-model="message" @input="sendMessage" type="text" placeholder="Type your message" />
-		<p>Received Message: {{ receivedMessage }}</p>
+		<textarea v-model="message" @input="sendMessage" type="text" placeholder="Type your message" class="w-full h-16" />
+		<div class="flex flex-row">
+			<button @click="copyToClipboard" class="hover:text-red-500">Copy to Clipboard</button>
+		</div>
+		<hr />
+		<p>{{ receivedMessage }}</p>
 	</div>
 </template>
 
@@ -12,6 +16,13 @@ import { io } from 'socket.io-client';
 const message = ref('');
 const receivedMessage = ref('');
 let socket = null;
+
+
+const copyToClipboard = () => {
+    navigator.clipboard.writeText(receivedMessage.value).catch(err => {
+        console.error("Failed to copy text: ", err);
+    });
+};
 
 // Connect to the Socket.IO server
 onMounted(() => {
