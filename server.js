@@ -2,8 +2,9 @@ import { Server } from "socket.io";
 
 const io = new Server(3000, {
 	cors: {
-		origin: "http://localhost:5173", // Vite default port
+		origin: ["*"], // Allow both localhost and your local network IP
 		methods: ["GET", "POST"],
+		credentials: true,
 	},
 });
 
@@ -11,6 +12,7 @@ console.log("Socket.IO server running on http://localhost:3000");
 
 io.on("connection", (socket) => {
 	console.log("A client connected:", socket.id);
+	console.log("number of connections", io.sockets.sockets.size);
 
 	socket.on("broadcast-message", (message) => {
 		console.log(`Message from ${socket.id}:`, message);
@@ -21,5 +23,6 @@ io.on("connection", (socket) => {
 
 	socket.on("disconnect", () => {
 		console.log("Client disconnected:", socket.id);
+		console.log("number of connections", io.sockets.sockets.size);
 	});
 });

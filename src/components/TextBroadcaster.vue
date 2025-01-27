@@ -17,7 +17,6 @@ const message = ref('');
 const receivedMessage = ref('');
 let socket = null;
 
-
 const copyToClipboard = () => {
     navigator.clipboard.writeText(receivedMessage.value).catch(err => {
         console.error("Failed to copy text: ", err);
@@ -26,10 +25,17 @@ const copyToClipboard = () => {
 
 // Connect to the Socket.IO server
 onMounted(() => {
-  socket = io('http://localhost:3000'); // Match your server's URL and port
+  // socket = io('https://k7cbm6mr-3000.euw.devtunnels.ms/', {
+  socket = io('http://localhost:3000/', {
+    transports: ['websocket'],
+    withCredentials: true,
+    extraHeaders: {
+      'Access-Control-Allow-Origin': '*',
+    },
+  });
 
   socket.on('connect', () => {
-    console.log('Connected to WebSocket server:', socket.id);
+    console.log('Connected to WebSocket server:', socket.id );
   });
 
   socket.on('disconnect', () => {
